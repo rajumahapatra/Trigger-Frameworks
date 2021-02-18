@@ -1,3 +1,5 @@
+// trigger framework using interface
+// sObjectTriggerHandlers implement these methods and provide the defination
 public interface ITriggerHandler {
     void beforeInsert(List<sObject> newRecords);
     void beforeUpdate(Map<Id, sObject> newRecordsMap, Map<Id, sObject> oldRecordsMap);

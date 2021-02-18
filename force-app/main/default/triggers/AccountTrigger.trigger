@@ -1,44 +1,11 @@
-trigger AccountTrigger on Account(before insert) 
-{
+trigger AccountTrigger on Account(before insert, before update, before delete, after insert, after update, after delete, after undelete) {
     System.debug('Account Triggers Starts'); 
+    
+    // trigger framework using virtual method
     (new AccountTriggerHandler()).run();
 
+    // trigger framework using interface
     TriggerDispatcher.run(new AccountTriggerHandler());
     
-    /* if(trigger.isBefore) 
-    {
-        if(trigger.isInsert) 
-        {
-            //AccountTriggerHandler.preventDuplicateAccount(trigger.new, null);
-        }
-        if(trigger.isUpdate) 
-        {
-            //AccountTriggerHandler.preventDuplicateAccount(trigger.new, trigger.old);
-            
-        }
-        if(trigger.isInsert || trigger.isUpdate) 
-        {
-            AccountTriggerHandler.updateHelloWithWorld(trigger.new);
-        }
-        if(trigger.isInsert) 
-        {
-            //AccountTriggerHandler.CreateAccounts(trigger.new);
-        }
-        if(trigger.isDelete) 
-        {
-            AccountTriggerHandler.preventDeletion(trigger.old);
-        }
-    }
-    if(trigger.isAfter) {
-        if(trigger.isInsert)
-        {
-            //AccountTriggerHandler.createContacts(trigger.new);
-            AccountTriggerHandler.updateSalesRep(trigger.new);
-        }
-        if(trigger.isUpdate)
-        {
-            AccountTriggerHandler.updatePhoneFromPrimaryContact(trigger.new);
-        }
-    } */
     System.debug('Account Triggers Ends'); 
 }

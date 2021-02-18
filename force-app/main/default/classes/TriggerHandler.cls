@@ -1,3 +1,5 @@
+// trigger framework using virtual
+// sObjectTriggerHandlers extend methods of this class
 public virtual inherited sharing class TriggerHandler {
     
     public void run() {
